@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 # => Installed Gems
 # HAML for a better HTML
 gem 'haml-rails'
+# Annotate for model annotation
+gem 'annotate'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
