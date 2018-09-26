@@ -1,0 +1,8 @@
+= form_tag products_path, method: :get, class: 'w-100' do
+  .input-group.mt-3
+    = select_tag :category, options_from_collection_for_select(@categories, 'id', 'name', {selected: @category}), {include_blank: 'Busque por categoría', class: 'selectpicker custom-width',data: {style: 'select-with-transition'}}
+    -# = text_field_tag :keyword, nil, placeholder: "Buscar", class: "form-control", value: @keyword, required: true
+    %span.input-group-append
+      = content_tag :button, type: :submit, class: "btn btn-info btn-round" do
+        %i.glyphicon.glyphicon-search
+        Buscar

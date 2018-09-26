@@ -1,0 +1,37 @@
+.page-header.header-filter{"data-parallax" => "true", "filter-color" => "white", :style => "background-image: url('#{asset_path('bg.jpg')}');"}
+  .container
+    .row.title-row
+.section.section-gray
+  .container
+    .main.main-raised.main-product.py-0
+      .row
+        .col-12
+          = form_for @product, html: {class: 'form'} do |f|
+            %h3.title= title
+            - if @product.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@product.errors.count, "error")} al guardar este producto:"
+                %ul
+                  - @product.errors.full_messages.each do |message|
+                    %li= message
+            .form-group.bmd-form-group
+              = f.label :name, 'Nombre del producto', class: 'bmd-label-floating'
+              = f.text_field :name, required: true, class: 'form-control'
+            .form-group.bmd-form-group
+              = f.label :description, 'Escribe una breve descripción del producto', class: 'bmd-label-floating'
+              = f.text_area :description, required: true, class: 'form-control'
+            .form-group.form-file-upload.form-file-multiple
+              = f.file_field :images, class: 'inputFileHidden', multiple: true
+              .input-group
+                %input.form-control.inputFileVisible{:multiple => "multiple", :placeholder => "Selecciona las imágenes de tu producto", :type => "text"}
+                %span.input-group-btn
+                  %button.btn.btn-fab.btn-round.btn-info{:type => "button"}
+                    %i.material-icons layers
+            .form-group.bmd-form-group
+              = f.label :category, 'Categoría del producto'
+              = f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name'), {},{title: 'Selecciona una categoría', class: 'w-100 d-block selectpicker', data: {style: 'w-100 select-with-transition'}}
+            .form-group.bmd-form-group
+              = f.label :pricing, 'Precio del producto (en pesos)',class: 'bmd-label-floating'
+              = f.number_field :pricing, class: 'form-control'
+            .text-center
+              = f.submit 'Guardar producto', class: 'btn btn-success btn-wd'

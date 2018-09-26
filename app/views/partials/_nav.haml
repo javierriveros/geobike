@@ -1,0 +1,23 @@
+%nav#sectionsNav.navbar.navbar-color-on-scroll.navbar-transparent.fixed-top.navbar-expand-lg{"color-on-scroll" => "100"}
+  .container
+    .navbar-translate
+      = link_to root_path, class: 'navbar-brand' do
+        GeoBike
+      %button.navbar-toggler{"aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.navbar-toggler-icon
+        %span.navbar-toggler-icon
+        %span.navbar-toggler-icon
+    .collapse.navbar-collapse
+      %ul.navbar-nav.ml-auto
+        %li.dropdown.nav-item
+          = link_to products_path, class: 'nav-link' do
+            %i.material-icons receipt
+            Productos
+        %li.button-container.nav-item.iframe-extern
+          = link_to cart_path, class: 'btn btn-rose btn-round btn-block' do
+            %i.material-icons shopping_cart
+            (
+            %span#cart-size= @shopping_cart.products.count
+            )
+            Ver carrito

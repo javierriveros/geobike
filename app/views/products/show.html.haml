@@ -1,0 +1,97 @@
+.page-header.header-filter{"data-parallax" => "true", "filter-color" => "bluex  ", :style => "background-image: url('#{asset_path('bg.jpg')}');"}
+  .container
+    -# .row.title-row
+    -#   .col-md-4.ml-auto
+    -#     %button.btn.btn-white.float-right
+    -#       %i.material-icons shopping_cart
+    -#       0 Items
+.section.section-gray
+  .container
+    .main.main-raised.main-product
+      .row
+        .col-md-6.col-sm-6
+          .tab-content
+            - @product.images.each do |image|
+              .tab-pane{id: "product-page-#{image.id}", class: "#{'active' if @product.first_image?(image)}"}
+                = image_tag url_for(image)
+          %ul.nav.flexi-nav{"data-tabs" => "tabs"}
+            - @product.images.each do |image|
+              %li.nav-item
+                = link_to "#product-page-#{image.id}", class: 'nav-link', data: {toggle: 'tab'} do
+                  = image_tag url_for(image), fetch_format: :auto, crop: "scale", width: 100
+        .col-md-6.col-sm-6
+          %h2.title= @product.name
+          %h3.main-price
+            $
+            = @product.pricing
+          #accordion{:role => "tablist"}
+            .card.card-collapse
+              #description_title.card-header{:role => "tab"}
+                %h5.mb-0
+                  %a{"aria-controls" => "description", "aria-expanded" => "true", "data-toggle" => "collapse", :href => "#description"}
+                    Descripción
+                    %i.material-icons keyboard_arrow_down
+              #description.collapse.show{"aria-labelledby" => "description_title", "data-parent" => "#accordion", :role => "tabpanel"}
+                .card-body
+                  %p= @product.description
+            -# .card.card-collapse
+            -#   #headingThree.card-header{:role => "tab"}
+            -#     %h5.mb-0
+            -#       %a.collapsed{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseThree"}
+            -#         Details and Care
+            -#         %i.material-icons keyboard_arrow_down
+            -#   #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion", :role => "tabpanel"}
+            -#     .card-body
+            -#       %ul
+            -#         %li Storm and midnight-blue stretch cotton-blend
+            -#         %li
+            -#           Notch lapels, functioning buttoned cuffs, two front flap pockets,
+            -#           single vent, internal pocket
+            -#         %li Two button fastening
+            -#         %li 84% cotton, 14% nylon, 2% elastane
+            -#         %li Dry clean
+          .row.pull-right
+            = render 'in_shopping_carts/form', product: @product
+    .features.text-center
+      .row
+        .col-md-4
+          .info
+            .icon.icon-info
+              %i.material-icons local_shipping
+            %h4.info-title 2 días de entrega
+            %p
+              Te garantizamos el menor tiempo posible de entrega para tu producto.
+        .col-md-4
+          .info
+            .icon.icon-success
+              %i.material-icons verified_user
+            %h4.info-title Política reembolsable
+            %p
+              Si no estás conforme con tu producto te devolverémos tu dinero.
+        .col-md-4
+          .info
+            .icon.icon-rose
+              %i.material-icons favorite
+            %h4.info-title Alta confiabilidad
+            %p
+              Nuestros proveedores son 100% confiables y de la mejor calidad.
+    .related-products
+      %h3.title.text-center También puedes estar interesado en:
+      .row
+        - @random.each do |product|
+          .col-lg-3.col-md-6
+            .card.card-product
+              - if product.images.any?
+                .card-header.card-header-image
+                  = link_to product do
+                    = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
+              .card-body
+                %h6.card-category.text-rose= product.category.name
+                = link_to product do
+                  %h4.card-title= truncate(product.name, length: 40, separator: '...')
+                .card-description
+                  %p= truncate(product.description, length: 50, separator: '...')
+                  .price.price-new
+                    %h4
+                      $
+                      = product.pricing

@@ -1,0 +1,95 @@
+.page-header.header-filter.header-small{"data-parallax" => "true", :style => "background-image: url('#{asset_path('bg.jpg') }');"}
+  .container
+    .row
+      .col-md-8.ml-auto.mr-auto.text-center
+        .brand
+          %h1.title Todos los productos
+          %h4 Conoce todos los productos de nuestro catálogo
+
+.main.main-raised
+  -# .section
+  -#   .container
+  -#     %h2.section-title Últimas ofertas
+  -#     .row
+  -#       .col-md-4
+  -#         .card.card-product.card-plain
+  -#           .card-header.card-header-image
+  -#             %a{:href => "#pablo"}
+  -#               %img{:alt => "", :src => "../assets/img/examples/gucci.jpg"}/
+  -#           .card-body.text-center
+  -#             %h4.card-title
+  -#               %a{:href => "#pablo"} Gucci
+  -#             %p.card-description
+  -#               The structured shoulders and sleek detailing ensure a sharp silhouette.
+  -#               Team it
+  -#               with a silk pocket square and leather loafers.
+  -#           .card-footer
+  -#             .price-container
+  -#               %span.price.price-old €1,430
+  -#               %span.price.price-new €743
+  -#             .stats.ml-auto
+  -#               %button.btn.btn-just-icon.btn-link.btn-rose{"data-original-title" => "Saved to Wishlist", :rel => "tooltip", :title => "", :type => "button"}
+  -#                 %i.material-icons favorite
+  -#       .col-md-4
+  -#         .card.card-product.card-plain
+  -#           .card-header.card-header-image
+  -#             %a{:href => "#pablo"}
+  -#               %img{:alt => "", :src => "../assets/img/examples/dolce.jpg"}/
+  -#           .card-body
+  -#             %h4.card-title Dolce &amp; Gabbana
+  -#             %p.card-description
+  -#               The structured shoulders and sleek detailing ensure a sharp silhouette.
+  -#               Team it
+  -#               with a silk pocket square and leather loafers.
+  -#           .card-footer
+  -#             .price-container
+  -#               %span.price.price-old €1,430
+  -#               %span.price.price-new €743
+  -#             .stats.ml-auto
+  -#               %button.btn.btn-just-icon.btn-link.btn-rose{"data-original-title" => "Saved to Wishlist", :rel => "tooltip", :title => "", :type => "button"}
+  -#                 %i.material-icons favorite
+  -#       .col-md-4
+  -#         .card.card-product.card-plain
+  -#           .card-header.card-header-image
+  -#             %a{:href => "#pablo"}
+  -#               %img{:alt => "", :src => "../assets/img/examples/tom-ford.jpg"}/
+  -#           .card-body
+  -#             %h4.card-title Dolce &amp; Gabbana
+  -#             %p.card-description
+  -#               The structured shoulders and sleek detailing ensure a sharp silhouette.
+  -#               Team it
+  -#               with a silk pocket square and leather loafers.
+  -#           .card-footer
+  -#             .price-container
+  -#               %span.price.price-old €1,430
+  -#               %span.price.price-new €743
+  -#             .stats.ml-auto
+  -#               %button.btn.btn-just-icon.btn-link.btn-rose{"data-original-title" => "Saved to Wishlist", :rel => "tooltip", :title => "", :type => "button"}
+  -#                 %i.material-icons favorite
+  / section
+  .section.py-2
+    .container
+      .row.justify-content-between.align-items-center
+        .col-lg-6.col-12
+          %h2.section-title Busca lo que necesitas
+        .col-lg-6.col-12.d-flex
+          = render 'partials/search'
+      .row
+        .col-md-12
+          .row
+            - @products.each do |product|
+              .col-md-4
+                .card.card-product.card-plain.no-shadow{"data-colored-shadow" => "false"}
+                  - if product.images.any?
+                    .card-header.card-header-image
+                      = link_to product do
+                        = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
+                  .card-body
+                    = link_to product do
+                      %h4.card-title= product.name
+                    %p.description= product.description
+                  .card-footer.justify-content-between
+                    .price-container
+                      %span.price.price-new
+                        $
+                        = product.pricing

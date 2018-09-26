@@ -1,0 +1,61 @@
+.page-header.header-filter.header-small{"data-parallax" => "true", :style => "background-image: url('#{asset_path 'bg.jpg'}');"}
+  .container
+    .row
+      .col-md-8.ml-auto.mr-auto.text-center
+        %h2.title Tu carrito de compras
+.main.main-raised
+  .container
+    .card.card-plain
+      .card-body
+        .table-responsive
+          %table.table.table-shopping
+            %thead
+              %tr
+                %th.text-center
+                %th Producto
+                %th
+                %th
+                %th.text-right Precio
+                %th.text-right Cantidad
+                %th.text-right Subtotal
+                %th
+            %tbody
+              - @shopping_cart.in_shopping_carts.each do |i_sh| 
+                - product = i_sh.product
+                %tr{id: "#{product.id}"}
+                  - if product.images.any?
+                    %td
+                      .img-container
+                        = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
+                  %td.td-name{colspan: 2}
+                    = link_to truncate(product.name, length: 50, separator: '...'), product
+                    %br/
+                    %small= product.category.name
+                  %td
+                  %td.td-number.text-right
+                    %small> $
+                    = product.pricing
+                  %td.td-number
+                    .form-group.form-group-inline
+                      = form_for i_sh do |f|
+                        = f.number_field :quantity, class: 'form-control', min: 1
+                  %td.td-number
+                    %small> $
+                    = product.pricing * i_sh.quantity
+                  %td.td-actions
+                    = link_to i_sh, method: :delete, class: 'btn btn-link btn-danger', "data-placement": "left", "data-toggle": "tooltip", title: "Remover producto" do
+                      %i.material-icons close
+              %tr
+                %td{:colspan => "3"}
+                %td.td-total
+                  Total
+                %td.td-price{:colspan => "1"}
+                  %small>
+                    $
+                    = @shopping_cart.total
+                    COP
+                %td{:colspan => "1"}
+                %td.text-right{:colspan => "2"}
+                  %button.btn.btn-info.btn-round{:type => "button"}
+                    Completar compra
+                    %i.material-icons keyboard_arrow_right

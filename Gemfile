@@ -34,6 +34,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 # Annotate for model annotation
 gem 'annotate'
+# Cloudinary for image uploading
+gem 'cloudinary', require: false
+gem 'activestorage-cloudinary-service'
+gem 'image_processing', '~> 1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
