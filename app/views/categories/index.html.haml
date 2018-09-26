@@ -1,21 +1,18 @@
-%h1 Listing categories
-
-%table
-  %thead
-    %tr
-      %th Name
-      %th
-      %th
-      %th
-
-  %tbody
-    - @categories.each do |category|
-      %tr
-        %td= category.name
-        %td= link_to 'Show', category
-        %td= link_to 'Edit', edit_category_path(category)
-        %td= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Category', new_category_path
+.page-header.header-filter{"data-parallax" => "true", "filter-color" => "white", :style => "background-image: url('#{asset_path('bg.jpg')}');"}
+  .container
+    .row.title-row
+.section.section-gray
+  .container
+    .main.main-raised.main-product.py-0
+      .row
+        .col-md-12.ml-auto.mr-auto
+          %h2.title.text-center Categorías disponibles
+        - @categories.each do |category|
+          .col-lg-3.col-sm-6.col-12
+            .card.card-raised.card-background{style: "background: url(#{asset_path 'bg.jpg'}) center / cover"}
+              .card-body{style: 'min-height: auto'}
+                = link_to category do
+                  %h3.card-title= category.name
+                = link_to category, class: 'btn btn-danger btn-round' do
+                  %i.material-icons touch_app
+                  Ver

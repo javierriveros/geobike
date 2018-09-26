@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body class="<%= 'shopping-cart' if params[:controller] == 'shopping_cart' && params[:action] == 'show' %><%= 'product-page' if params[:controller] == 'products' && params[:action] == 'show' || params[:action] == 'new' || params[:action] == 'edit' %>">
+  <body class="<%= 'shopping-cart' if params[:controller] == 'shopping_cart' && params[:action] == 'show' %><%= 'product-page' if (params[:controller] == 'products' && params[:action] == 'show') || params[:action] == 'new' || params[:action] == 'edit' || params[:controller] == 'categories' %>">
     <%= render 'partials/nav' %>
     <%= yield %>
     <%= render 'partials/footer' %>
