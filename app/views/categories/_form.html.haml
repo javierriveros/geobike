@@ -1,13 +1,21 @@
-= form_for @category do |f|
-  - if @category.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@category.errors.count, "error")} prohibited this category from being saved:"
-      %ul
-        - @category.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+.page-header.header-filter{"data-parallax" => "true", "filter-color" => "white", :style => "background-image: url('#{asset_path('bg.jpg')}');"}
+  .container
+    .row.title-row
+.section.section-gray
+  .container
+    .main.main-raised.main-product.py-0
+      .row
+        .col-12
+          = form_for @category, html: {class: 'form'} do |f|
+            %h3.title= title
+            - if @category.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@product.errors.count, "error")} al guardar este producto:"
+                %ul
+                  - @product.errors.full_messages.each do |message|
+                    %li= message
+            .form-group.bmd-form-group
+              = f.label :name, 'Nombre de la categoría', class: 'bmd-label-floating'
+              = f.text_field :name, required: true, class: 'form-control'
+            .text-center
+              = f.submit 'Guardar categoría', class: 'btn btn-success btn-wd'
