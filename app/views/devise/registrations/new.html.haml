@@ -1,0 +1,70 @@
+.page-header.header-filter{"filter-color": "purple", style: "background-image: url('#{asset_path('bg.jpg') }'); background-size: cover; background-position: top center;"}
+  .container
+    .row
+      .col-md-10.ml-auto.mr-auto
+        .card.card-signup
+          %h2.card-title.text-center Register
+          .card-body
+            .row
+              .col-md-5.ml-auto
+                .info.info-horizontal
+                  .icon.icon-rose
+                    %i.material-icons timeline
+                  .description
+                    %h4.info-title Marketing
+                    %p.description
+                      We've created the marketing campaign of the website. It was a very
+                      interesting collaboration.
+                .info.info-horizontal
+                  .icon.icon-primary
+                    %i.material-icons code
+                  .description
+                    %h4.info-title Fully Coded in HTML5
+                    %p.description
+                      We've developed the website with HTML5 and CSS3. The client has access
+                      to the code using GitHub.
+                .info.info-horizontal
+                  .icon.icon-info
+                    %i.material-icons group
+                  .description
+                    %h4.info-title Built Audience
+                    %p.description
+                      There is also a Fully Customizable CMS Admin Dashboard for this
+                      product.
+              .col-md-5.mr-auto
+                .social.text-center
+                  %button.btn.btn-just-icon.btn-round.btn-twitter
+                    %i.fa.fa-twitter
+                  %button.btn.btn-just-icon.btn-round.btn-dribbble
+                    %i.fa.fa-dribbble
+                  %button.btn.btn-just-icon.btn-round.btn-facebook
+                    %i.fa.fa-facebook
+                  %h4 or be classical
+                = form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form"}) do |f|
+                  = devise_error_messages!
+                  .form-group
+                    .input-group
+                      .input-group-prepend
+                        %span.input-group-text
+                          %i.material-icons face
+                      = f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Nombre completo..."
+                  .form-group
+                    .input-group
+                      .input-group-prepend
+                        %span.input-group-text
+                          %i.material-icons mail
+                      = f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Correo electrónico..."
+                  .form-group
+                    .input-group
+                      .input-group-prepend
+                        %span.input-group-text
+                          %i.material-icons lock_outline
+                      = f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Contraseña..."
+                  .form-group
+                    .input-group
+                      .input-group-prepend
+                        %span.input-group-text
+                          %i.material-icons lock_outline
+                      = f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirma tu contraseña..."
+                  .text-center
+                    = f.submit "Sign up", class: "btn btn-primary btn-round"

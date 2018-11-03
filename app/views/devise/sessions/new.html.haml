@@ -1,0 +1,30 @@
+.page-header.header-filter{:style => "background-image: url('#{asset_path('bg7.jpg') }'); background-size: cover; background-position: top center;"}
+  .container
+    .row
+      .col-lg-4.col-md-6.ml-auto.mr-auto
+        .card.card-login.p-relative
+          = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|
+            .card-header.card-header-primary.text-center
+              %h4.card-title Iniciar sesión
+              -# .social-line
+              -#   %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
+              -#     %i.fa.fa-facebook-square
+              -#   -# %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
+              -#   -#   %i.fa.fa-twitter
+              -#   -# %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
+              -#   -#   %i.fa.fa-google-plus
+            .card-body
+              .input-group
+                .input-group-prepend
+                  %span.input-group-text
+                    %i.material-icons mail
+                = f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Correo electrónico..."
+              .input-group
+                .input-group-prepend
+                  %span.input-group-text
+                    %i.material-icons lock_outline
+                = f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Contraseña..."
+            .footer.text-center
+              = f.submit "Log in", class: " btn btn-primary btn-link btn-wd btn-lg"
+              -# .d-flex.justify-content-between
+              -#   = render "devise/shared/links"

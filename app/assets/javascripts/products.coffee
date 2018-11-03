@@ -4,3 +4,4 @@
 document.addEventListener 'turbolinks:load', (e)->
   $('body').bootstrapMaterialDesign()
   $('.selectpicker').selectpicker()
+  $('body > #alert').not('.alert-important').delay(3000).fadeOut(350)

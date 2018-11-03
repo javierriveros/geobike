@@ -1,0 +1,6 @@
+- if alert || notice
+  .alert#alert{class: "alert-info #{'alert-danger' if alert}"}
+    %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+      %i.material-icons close
+    = alert
+    = notice

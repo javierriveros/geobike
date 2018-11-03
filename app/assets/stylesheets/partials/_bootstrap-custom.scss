@@ -5,3 +5,17 @@
 .custom-width {
   width: calc(100% - 110px);
 }
+
+.card-login .form {
+  min-height: 250px;
+}
+
+body > #alert {
+  position: fixed;
+  width: 80%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: 2001;
+}
