@@ -42,7 +42,6 @@ gem 'image_processing', '~> 1.2'
 gem 'devise'
 # Name of person for names handling
 gem 'name_of_person'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
