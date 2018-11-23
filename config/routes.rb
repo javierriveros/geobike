@@ -8,4 +8,13 @@ Rails.application.routes.draw do
 
   get '/cart', to: 'shopping_carts#show'
   get '/add/:product_id', as: :add_to_cart, to: 'in_shopping_carts#create'
+  get '/checkout', to: 'payments#checkout'
+  get '/ok', to: 'home#success'
+  # get '/download/:id', to: 'links#download'
+  # get '/download/:id/file/:attachment_id', to: 'links#download_attachment', as: :download_attachment
+  # get '/invalid', to: 'welcome#unregistered'
+  get '/orders', to: 'orders#index'
+
+  post '/pay', to: 'payments#create'
+  post 'payments/cards', to: 'payments#process_card'
 end

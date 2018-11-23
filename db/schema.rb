@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_043630) do
+ActiveRecord::Schema.define(version: 2018_11_06_190440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,19 @@ ActiveRecord::Schema.define(version: 2018_11_01_043630) do
     t.index ["shopping_cart_id"], name: "index_in_shopping_carts_on_shopping_cart_id"
   end
 
+  create_table "my_payments", force: :cascade do |t|
+    t.string "email"
+    t.string "ip"
+    t.string "status"
+    t.decimal "fee", precision: 6, scale: 2
+    t.string "paypal_id"
+    t.decimal "total", precision: 8, scale: 2
+    t.bigint "shopping_cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shopping_cart_id"], name: "index_my_payments_on_shopping_cart_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -85,5 +98,6 @@ ActiveRecord::Schema.define(version: 2018_11_01_043630) do
 
   add_foreign_key "in_shopping_carts", "products"
   add_foreign_key "in_shopping_carts", "shopping_carts"
+  add_foreign_key "my_payments", "shopping_carts"
   add_foreign_key "products", "categories"
 end

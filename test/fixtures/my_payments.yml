@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  ip: MyString
+  status: MyString
+  fee: 9.99
+  paypal_id: MyString
+  total: 9.99
+  shopping_cart: one
+
+two:
+  email: MyString
+  ip: MyString
+  status: MyString
+  fee: 9.99
+  paypal_id: MyString
+  total: 9.99
+  shopping_cart: two

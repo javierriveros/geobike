@@ -1,0 +1,26 @@
+.page-header.header-filter.header-small{"data-parallax" => "true", :style => "background-image: url('#{asset_path 'bg.jpg'}');"}
+  .container
+    .row
+      .col-md-8.ml-auto.mr-auto.text-center
+        %h2.title Your purchase has been processed
+        %p We'll send you an email with the instructions for acquiring your product.
+.main.main-raised
+  .container
+    .card.card-plain
+      .card-body
+        .table-responsive
+          %table.table.table-shopping
+            %thead
+              %th Product
+              %th Cost
+            %tbody
+              - @shopping_cart.in_shopping_carts.each do |i_sh| 
+                - product = i_sh.product
+                %tr
+                  %td= product.name
+                  %td= "$#{product.pricing / 100} USD"
+          .top-space.large-padding.text-center#payment_form
+            %p.medium
+              %strong
+                Total:
+                = "$#{ @shopping_cart.total / 100} USD"

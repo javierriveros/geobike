@@ -1,0 +1,9 @@
+-# .col-sm-4.col-md-3.inline-block
+.d-inline-block
+  = button_to "/pay", method: :post, class: "btn btn-paypal btn-round" do
+    Pagar con
+    = image_tag "paypal_logo_small.png", height: 20
+-# .col-sm-4.col-md-3.inline-block
+= content_tag :button, class: "btn btn-rose btn-round", data: { toggle: "modal", target: "#card-modal" } do
+  Pagar con tarjeta
+  = image_tag "visa_cc.png", height: 20

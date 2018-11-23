@@ -1,0 +1,28 @@
+.modal.fade#card-modal
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close.close-modal{type: "button", data: {dismiss: "modal"}, aria: { hidden: "true" }} ×
+        %h3.green-text.modal-title Pay with your card
+      = form_tag "/payments/cards", method: :post, style: "margin-top: 2em" do
+        .modal-body
+          .form-group.top-space
+            = text_field_tag :first_name, nil, class: "form-control floating-label", placeholder: "First Name", required: true
+          .form-group.top-space
+            = text_field_tag :last_name, nil, class: "form-control floating-label", placeholder: "Last Name", required: true
+          .form-group.top-space
+            = email_field_tag :email, nil, class: "form-control floating-label", placeholder: "Email", required: true
+          .form-group.top-space
+            = number_field_tag :number, nil, class: "form-control floating-label", placeholder: "Card Number", required: true
+          .form-group.top-space
+            %p.small Expiration Date
+            .col-xs-6.col-sm-6.col-md-6.inline-block
+              = select_tag :expire_month, options_for_select((1..12).to_a), class: "form-control"
+            .col-xs-6.col-sm-6.col-md-6.inline-block
+              = select_tag :expire_year, options_for_select((2016..2023).to_a), class: "form-control"
+          .form-group.top-space
+            = number_field_tag :cvv2, nil, class: "form-control floating-label", placeholder: "CVV (back of the card)", required: true
+          %span.blue-text * Los datos de tu tarjeta no son almacenados
+        .modal-footer
+          = content_tag :button, type: :submit, class: "btn btn-primary" do
+            Pay

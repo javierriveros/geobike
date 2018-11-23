@@ -16,6 +16,7 @@ class Product < ApplicationRecord
   belongs_to :category
   has_many :in_shopping_carts
   has_one :shopping_cart, through: :in_shopping_carts
+  has_many :my_payments, through: :shopping_cart
 
   validates_presence_of :name, :pricing
   validates :pricing, numericality: { greater_than: 0 }
@@ -27,5 +28,23 @@ class Product < ApplicationRecord
 
   def first_image?(image)
     self.images.first == image
+  end
+
+  def paypal_form
+    {
+      name: self.name,
+      sku: :item,
+      price: (self.pricing / 100),
+      currency: "USD",
+      quantity: 1
+    }
+  end
+
+  def sales
+    my_payments.payed
+  end
+
+  def sales_total
+    my_payments.payed.count * self.pricing
   end
 end

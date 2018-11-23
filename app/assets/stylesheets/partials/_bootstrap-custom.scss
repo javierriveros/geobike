@@ -19,3 +19,17 @@ body > #alert {
   bottom: 10px;
   z-index: 2001;
 }
+
+
+.btn-paypal {
+  color: #fff;
+  background-color: #0070ba;
+  border-color: #0070ba;
+  box-shadow: none;
+}
+
+.btn-paypal:hover {
+  color: #fff;
+  background-color: #005ea6;
+  border-color: #005ea6;
+}
