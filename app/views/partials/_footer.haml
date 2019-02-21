@@ -2,15 +2,9 @@
   .container
     %nav.float-left
       %ul
-        %li
-          %a{:href => "#"}
-            GeoBike
-        %li
-          %a{:href => "#"}
-            Acerca de
-        %li
-          %a{:href => "#"}
-            Términos y condiciones
+        %li= link_to "Geobike", root_path
+        %li= link_to "About", about_path
+        %li= link_to "Términos y condiciones", terms_path
     .copyright.float-right
       ©
       GeoBike 2018. Todos los derechos reservados.

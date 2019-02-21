@@ -1,0 +1,37 @@
+= page_header("Todos los eventos", "Enterate y asiste a los eventos cercanos.", "asset_path("bg.jpg")")
+
+.main.main-raised
+  .section.py-2
+    .container
+      .row
+        .col-md-12
+          .row
+            - @events.each do |event|
+              .col-md-4
+                .card.card-blog
+                  .card-header.card-header-image
+                    = link_to event do
+                      - if event.image.attached?
+                        = image_tag url_for(event.image), :fetch_format=>:auto, :crop=>"scale", class: "img"
+                      - else
+                        %img.img{:src => "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/office1.jpg"}/
+                      .card-title
+                        = event.name
+                  .card-body.pb-1.pl-3
+                    %span.badge.badge-rose #mtb
+                    %span.badge.badge-rose #ride
+                    %p.card-description= truncate(event.details, length: 90)
+                  .card-footer.d-block.pl-3
+                    .stats
+                      %span
+                        %i.material-icons access_time
+                        = event.starts_at.strftime("%b %d")
+                        ─
+                        = event.ends_at.strftime("%b %d")
+                    .mt-1
+                      = link_to "Ver más", event, class: "btn btn-round btn-sm btn-primary"
+                  -# - if event.image.attached?
+                  -#   .card-header.card-header-image
+                  -#     = link_to event do
+                  -#       = image_tag url_for(event.image), :fetch_format=>:auto, :crop=>"scale"
+                  -#       = distance_of_time_in_words_to_now(event.starts_at)

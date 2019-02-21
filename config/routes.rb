@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   devise_for :users
   resources :categories
   resources :products
@@ -17,4 +18,7 @@ Rails.application.routes.draw do
 
   post '/pay', to: 'payments#create'
   post 'payments/cards', to: 'payments#process_card'
+
+  get '/about', to: 'home#about'
+  get '/terms', to: 'home#terms'
 end

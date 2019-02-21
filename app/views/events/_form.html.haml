@@ -1,0 +1,55 @@
+.page-header.header-filter{"data-parallax" => "true", "filter-color" => "white", :style => "background-image: url('#{asset_path('bg.jpg')}');"}
+  .container
+    .row.title-row
+.section.section-gray
+  .container
+    .main.main-raised.main-product.py-0
+      .row
+        .col-12
+          = form_for @event do |f|
+            %h3.title= title
+            - if @event.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+                %ul
+                  - @event.errors.full_messages.each do |message|
+                    %li= message
+
+            .form-group.bmd-form-group
+              = f.label :name, class: 'bmd-label-floating'
+              = f.text_field :name, class: 'form-control'
+            .form-group.bmd-form-group
+              = f.label :details, class: 'bmd-label-floating'
+              = f.text_area :details, class: 'form-control', size: "12x5"
+            .form-group.form-file-upload.form-file-multiple
+              = f.file_field :image, class: 'inputFileHidden'
+              .input-group
+                %input.form-control.inputFileVisible{:multiple => "multiple", :placeholder => "Selecciona la imágen del evento", :type => "text"}
+                %span.input-group-btn
+                  %button.btn.btn-fab.btn-round.btn-info{:type => "button"}
+                    %i.material-icons attach_file
+            .form-group.bmd-form-group
+              = f.label :starts_at
+              = f.text_field :starts_at, class: 'form-control datetimepicker'
+            .form-group.bmd-form-group
+              = f.label :ends_at
+              = f.text_field :ends_at, class: 'form-control datetimepicker'
+            .form-group.bmd-form-group
+              = f.label :location, class: 'bmd-label-floating'
+              = f.text_field :location, class: 'form-control'
+            .text-center
+              = f.submit 'Guardar evento', class: 'btn btn-success btn-wd'
+:javascript
+  $('.datetimepicker').datetimepicker({
+    icons: {
+      time: "fa fa-clock-o",
+      date: "fa fa-calendar",
+      up: "fa fa-chevron-up",
+      down: "fa fa-chevron-down",
+      previous: 'fa fa-chevron-left',
+      next: 'fa fa-chevron-right',
+      today: 'fa fa-screenshot',
+      clear: 'fa fa-trash',
+      close: 'fa fa-remove'
+    }
+  });

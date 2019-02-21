@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
-  <body class="<%= 'signup-page ' if controller_name == 'registrations' %><%= 'login-page ' if controller_name == 'sessions' %><%= 'shopping-cart' if controller_name == 'shopping_cart' && action_name == 'show' %><%= 'product-page' if (controller_name == 'products' && action_name == 'show') || (action_name == 'new' && controller_name != 'sessions' && controller_name != 'registrations') || action_name == 'edit' || controller_name == 'categories' %>">
+  <body class="<%= 'signup-page ' if controller_name == 'registrations' %><%= 'login-page ' if controller_name == 'sessions' %><%= 'shopping-cart' if controller_name == 'shopping_cart' && action_name == 'show' %><%= 'product-page' if ((controller_name == 'products' || controller_name == 'events') && action_name == 'show') || (action_name == 'new' && controller_name != 'sessions' && controller_name != 'registrations') || action_name == 'edit' || controller_name == 'categories' %>">
     <%= render 'partials/alerts'%>
     <%= render 'partials/nav' %>
     <%= yield %>

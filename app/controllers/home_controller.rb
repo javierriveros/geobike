@@ -7,11 +7,17 @@ class HomeController < ApplicationController
   #   render layout: 'landing'
   # end
 
+  def about
+  end
+
+  def terms
+  end
+
   def success
-    # if @shopping_cart.payed?
-    #   cookies[:shopping_cart_id] = nil
-    # else
-    #   redirect_to cart_path
-    # end
+    if @shopping_cart.payed?
+      cookies[:shopping_cart_id] = nil
+    else
+      redirect_to cart_path
+    end
   end
 end
