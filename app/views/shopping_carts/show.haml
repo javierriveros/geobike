@@ -30,34 +30,26 @@
                   %td.td-name{colspan: 2}
                     = link_to truncate(product.name, length: 50, separator: '...'), product
                     %br/
-                    %small= product.category.name
+                    %small= link_to product.category.name, product.category, class: 'text-info'
                   %td
                   %td.td-number.text-right
-                    %small> $
-                    = product.pricing
+                    %small= number_to_currency(product.pricing)
                   %td.td-number
                     .form-group.form-group-inline
                       = form_for i_sh do |f|
                         = f.number_field :quantity, class: 'form-control', min: 1
                   %td.td-number
-                    %small> $
-                    = product.pricing * i_sh.quantity
+                    %small= number_to_currency(product.pricing * i_sh.quantity)
                   %td.td-actions
                     = link_to i_sh, method: :delete, class: 'btn btn-link btn-danger', "data-placement": "left", "data-toggle": "tooltip", title: "Remover producto" do
                       %i.material-icons close
               %tr
-                %td{:colspan => "3"}
                 %td.td-total
                   Total
-                %td.td-price{:colspan => "1"}
-                  %small>
-                    $
-                    = @shopping_cart.total
+                %td.td-price
+                  %small
+                    = number_to_currency(@shopping_cart.total)
                     COP
-                %td{:colspan => "1"}
-                %td.text-right{:colspan => "2"}
+                %td.text-right{:colspan => "6"}
                   = render 'payments/buttons'
-                  = render 'payments/card_data'
-                  -# %button.btn.btn-info.btn-round{:type => "button"}
-                  -#   Completar compra
-                  -#   %i.material-icons keyboard_arrow_right
+= render 'payments/card_data'

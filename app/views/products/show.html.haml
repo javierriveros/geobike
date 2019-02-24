@@ -21,9 +21,7 @@
                   = image_tag url_for(image), fetch_format: :auto, crop: "scale", width: 100
         .col-md-6.col-sm-6
           %h2.title= @product.name
-          %h3.main-price
-            $
-            = @product.pricing
+          %h3.main-price= number_to_currency(@product.pricing)
           #accordion{:role => "tablist"}
             .card.card-collapse
               #description_title.card-header{:role => "tab"}
@@ -86,12 +84,10 @@
                   = link_to product do
                     = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
               .card-body
-                %h6.card-category.text-rose= product.category.name
+                %h6.card-category.text-rose= link_to product.category.name, product.category
                 = link_to product do
                   %h4.card-title= truncate(product.name, length: 40, separator: '...')
                 .card-description
                   %p= truncate(product.description, length: 50, separator: '...')
                   .price.price-new
-                    %h4
-                      $
-                      = product.pricing
+                    %h4= number_to_currency(product.pricing)

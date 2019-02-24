@@ -15,8 +15,8 @@ class Product < ApplicationRecord
   has_many_attached :images
   belongs_to :category
   has_many :in_shopping_carts
-  has_one :shopping_cart, through: :in_shopping_carts
-  has_many :my_payments, through: :shopping_cart
+  has_and_belongs_to_many :shopping_carts, through: :in_shopping_carts, foreign_key: 'shopping_cart_id'
+  has_many :my_payments, through: :shopping_carts
 
   validates_presence_of :name, :pricing
   validates :pricing, numericality: { greater_than: 0 }

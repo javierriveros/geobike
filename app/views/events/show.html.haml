@@ -4,14 +4,14 @@
 .section.section-gray
   .container
     .main.main-raised.main-product
-      .row.align-items-center
-        .col-md-6.col-sm-6
+      .row
+        .col-md-6.col-sm-12
           - if @event.image.attached?
             = image_tag url_for(@event.image), :fetch_format=>:auto, :crop=>"scale", class: 'img-fluid rounded img-raised'
           - else
             %img.img-fluid.img-raised.rounded{:src => "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/office1.jpg"}/
-        .col-md-6.col-sm-6
-          %h2.title= @event.name
+        .col-md-6.col-sm-12
+          %h2.title.mt-0= @event.name
           %h3.main-price
             %span
               %i.material-icons access_time

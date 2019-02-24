@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @random = Product.random
+    @random = Product.random - [@product]
   end
 
   # GET /products/new

@@ -23,7 +23,7 @@
                   = link_to product do
                     = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
               .card-body
-                %h6.card-category.text-rose= product.category.name
+                %h6.card-category.text-rose= link_to product.category.name, product.category
                 = link_to product do
                   %h4.card-title= truncate(product.name, length: 40, separator: '...')
                 .card-description
