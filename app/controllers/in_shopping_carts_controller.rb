@@ -1,10 +1,12 @@
 class InShoppingCartsController < ApplicationController
   def create
     in_shopping_cart = InShoppingCart.create(product_id: params[:product_id], shopping_cart: @shopping_cart)
-    if in_shopping_cart.save
-      redirect_to cart_path, notice: "Agregamos el producto a tu carrito"
-    else
-      redirect_to products_path(id: params[:product_id]), notice: "No pudimos agregar el producto al carrito"
+    respond_to do |format|
+      if in_shopping_cart.save
+        format.json { render json: { message: "Se agregó el producto al carrito"} }
+      else
+        format.json { render json: { error: "No pudimos agregar el producto al carrito" } }
+      end
     end
   end
 

@@ -1,39 +1,40 @@
 #card-modal.modal.fade{role: "dialog", tabindex: 100}
   .modal-dialog.modal-signup{role: "document"}
     .modal-content
-      .modal-header.pb-0
-        %h3.modal-title Paga con tu tarjeta
-        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
-          %i.material-icons clear
-      = form_tag "/payments/cards", method: :post do
-        .modal-body.container-fluid
-          .row
-            .col-6
-              .form-group
-                = text_field_tag :first_name, nil, class: "form-control floating-label", placeholder: "Nombres", required: true
-            .col-6
-              .form-group
-                = text_field_tag :last_name, nil, class: "form-control floating-label", placeholder: "Apellidos", required: true
-          .row
-            .col-6
-              .form-group
-                = email_field_tag :email, nil, class: "form-control floating-label", placeholder: "Email", required: true
-            .col-6
-              .form-group
-                = number_field_tag :number, nil, class: "form-control floating-label", placeholder: "Número de la tarjeta", required: true
-          .form-group
-            %p.small.d-block.ml-auto Fecha de expiración
+      .card.card-signup.card-plain.py-0
+        .modal-header
+          %h3.modal-title.cart-title Paga con tu tarjeta
+          %button.close.mt-1{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %i.material-icons clear
+        = form_tag "/payments/cards", method: :post do
+          .modal-body.container-fluid
             .row
-              .col-4
-                %p.small Mes
-                = select_tag :expire_month, options_for_select((1..12).to_a), class: "form-control"
-              .col-4
-                %p.small Año
-                = select_tag :expire_year, options_for_select((2019..2026).to_a), class: "form-control"
-              .col-4
-                %p.small CVV
-                = number_field_tag :cvv2, nil, class: "form-control floating-label", placeholder: "CVV (reverso de la tarjeta)", required: true
-          %span.text-danger * Los datos de tu tarjeta no son almacenados
-      .modal-footer.pb-4.pr-4
-        = content_tag :button, type: :submit, class: "btn btn-success btn-round" do
-          Pagar 👉
+              .col-6
+                .form-group
+                  = text_field_tag :first_name, nil, class: "form-control floating-label", placeholder: "Nombres", required: true
+              .col-6
+                .form-group
+                  = text_field_tag :last_name, nil, class: "form-control floating-label", placeholder: "Apellidos", required: true
+            .row
+              .col-6
+                .form-group
+                  = email_field_tag :email, nil, class: "form-control floating-label", placeholder: "Email", required: true
+              .col-6
+                .form-group
+                  = number_field_tag :number, nil, class: "form-control floating-label", placeholder: "Número de la tarjeta", required: true
+            .form-group
+              %p.small.d-block.ml-auto Fecha de expiración
+              .row
+                .col-4
+                  %p.small Mes
+                  = select_tag :expire_month, options_for_select((1..12).to_a), class: "form-control"
+                .col-4
+                  %p.small Año
+                  = select_tag :expire_year, options_for_select((2019..2026).to_a), class: "form-control"
+                .col-4
+                  %p.small CVV
+                  = number_field_tag :cvv2, nil, class: "form-control floating-label", placeholder: "CVV (reverso de la tarjeta)", required: true
+            %span.text-danger * Los datos de tu tarjeta no son almacenados
+          .modal-footer.pb-4.pr-4
+            = content_tag :button, type: :submit, class: "btn btn-success btn-round" do
+              Pagar 👉
