@@ -48,8 +48,10 @@ gem 'paypal-sdk-rest'
 gem 'aasm'
 # Credit Card Validator
 gem 'credit_card_validator'
-# Administrate for data management
-gem 'administrate'
+# Trestle for resources management
+gem 'trestle'
+gem 'trestle-active_storage'
+gem 'trestle-auth'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -13,12 +13,12 @@
           .tab-content
             - @product.images.each do |image|
               .tab-pane{id: "product-page-#{image.id}", class: "#{'active' if @product.first_image?(image)}"}
-                = image_tag url_for(image)
+                = cl_image_tag "#{image.blob.key}"
           %ul.nav.flexi-nav{"data-tabs" => "tabs"}
             - @product.images.each do |image|
               %li.nav-item
                 = link_to "#product-page-#{image.id}", class: 'nav-link', data: {toggle: 'tab'} do
-                  = image_tag url_for(image), fetch_format: :auto, crop: "scale", width: 100
+                  = cl_image_tag "#{image.blob.key}", width: 90, height: 90, crop: :thumb
         .col-md-6.col-sm-12
           %h2.title= @product.name
           %h3.main-price= number_to_currency(@product.pricing)
