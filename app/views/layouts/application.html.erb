@@ -11,6 +11,17 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-135794733-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-135794733-1');
+    </script>
+
   </head>
 
   <body class="<%= 'signup-page ' if controller_name == 'registrations' %><%= 'login-page ' if controller_name == 'sessions' %><%= 'shopping-cart' if controller_name == 'shopping_cart' && action_name == 'show' %><%= 'product-page' if ((controller_name == 'products' || controller_name == 'events') && action_name == 'show') || (action_name == 'new' && controller_name != 'sessions' && controller_name != 'registrations') || action_name == 'edit' || controller_name == 'categories' %>">
