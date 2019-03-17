@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
-  #before_action :authenticate_user!, only: [:]
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:attend]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :attend]
 
   # GET /events
   # GET /events.json
@@ -10,6 +10,16 @@ class EventsController < ApplicationController
       @events = @date == 'upcoming' ? Event.upcoming : Event.past
     else
       @events = Event.latest
+    end
+  end
+
+  # POST /events/attend/1
+  def attend
+    attend = Attend.new(event_id: @event.id, user_id: current_user.id)
+    if attend.save
+      redirect_to @event, notice: 'Te has inscrito al evento'
+    else
+      redirect_to @event, alert: 'Hubo un problema al inscribirte al evento'
     end
   end
 

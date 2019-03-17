@@ -1,18 +1,17 @@
-.social-line.social-line-big-icons.social-line-white.mt-4
-  .container
-    .row
-      .col-4
-        %a.btn.btn-link.btn-just-icon.btn-instagram{href: "https://facebook.com/geobikeco", target: "_blank"}
-          %i.fa.fa-facebook-square
-      .col-4
-        %a.btn.btn-link.btn-just-icon.btn-twitter{href: "#pablo", target: "_blank"}
-          %i.fa.fa-twitter
-      .col-4
-        %a.btn.btn-link.btn-just-icon.btn-facebook{href: "https://instagram.com/geobike_co", target: "_blank"}
-          %i.fa.fa-instagram
-
 %footer.footer
   .container
+    .row
+      .col-12
+        %ul.social-buttons
+          %li
+            %a.btn.btn-link.btn-just-icon.btn-instagram{href: "https://facebook.com/geobikeco", target: "_blank"}
+              %i.fa.fa-facebook-square
+          %li
+            %a.btn.btn-link.btn-just-icon.btn-facebook{href: "https://instagram.com/geobike_co", target: "_blank"}
+              %i.fa.fa-instagram
+          %li
+            %a.btn.btn-link.btn-just-icon.btn-twitter{href: "#pablo", target: "_blank"}
+              %i.fa.fa-twitter 
     %nav.float-left
       %ul
         %li= link_to "Geobike", root_path

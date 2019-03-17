@@ -26,7 +26,7 @@
                   - if product.images.any?
                     %td
                       .img-container
-                        = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
+                        = cl_image_tag product.images.first.blob.key, :fetch_format=>:auto, :crop=>"scale"
                   %td.td-name{colspan: 2}
                     = link_to truncate(product.name, length: 50, separator: '...'), product
                     %br/

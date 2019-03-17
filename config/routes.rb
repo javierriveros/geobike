@@ -34,4 +34,6 @@ Rails.application.routes.draw do
   post '/pay', to: 'payments#create'
   post 'payments/cards', to: 'payments#process_card'
 
+  post '/events/:id/attend', to: 'events#attend', as: :attend
+
 end

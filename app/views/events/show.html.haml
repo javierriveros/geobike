@@ -12,16 +12,24 @@
             %img.img-fluid.img-raised.rounded{:src => "https://demos.creative-tim.com/material-kit-pro/assets/img/examples/office1.jpg"}/
         .col-md-6.col-sm-12
           %h2.title.mt-0= @event.name
-          %h3.main-price
+          %h3.main-price.mb-0
             %span
               %i.material-icons access_time
               = @event.starts_at.strftime("%b %d")
               ─
               = @event.ends_at.strftime("%b %d")
-          %p= @event.details
+          %span.badge.badge-pill.badge-info
+            = pluralize(@event.users.count, 'persona')
+            asistirán al evento.
+          %p.mt-2= @event.details
           .row.pull-right
-            = link_to root_path, class: " btn btn-success btn-round" do
-              ️☝️ Inscribirme
+            - if user_signed_in?
+              - if !@event.users.include?(current_user)
+                = button_to attend_path(id: @event.id), method: :post, class: " btn btn-success btn-round" do
+                  ️☝️ Inscribirme
+              - else
+                = link_to '#0', class: " btn btn-success btn-round disabled" do
+                  🎉 Ya estás inscrito 🎉
           -# .card.card-collapse
           -#   #headingThree.card-header{:role => "tab"}
           -#     %h5.mb-0

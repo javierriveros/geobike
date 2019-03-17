@@ -16,6 +16,9 @@ class Event < ApplicationRecord
   has_one_attached :image
   validates_presence_of :name, :details, :location
 
+  has_many :attend
+  has_many :users, through: :attend, foreign_key: 'event_id'
+
   scope :latest, -> { order('id DESC') }
   scope :upcoming, -> { where('starts_at > ?', Date.today) }
   scope :past, -> { where('starts_at < ?', Date.today) }

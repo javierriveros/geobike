@@ -22,7 +22,7 @@ class PaymentsController < ApplicationController
     if paypal_helper.process_card(params).create
       @my_payment = MyPayment.create!(paypal_id: paypal_helper.payment.id, ip: request.remote_ip, email: params[:email], shopping_cart_id: cookies[:shopping_cart_id])
       @my_payment.pay!
-      redirect_to cart_path, notice: "El pago se realizó correctamente"
+      redirect_to ok_path, notice: "El pago se realizó correctamente"
     else
       redirect_to cart_path, notice: paypal_helper.payment.error
     end

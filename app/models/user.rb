@@ -21,5 +21,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_person_name
 
+  has_many :attend
+  has_many :events, through: :attend
+
   validates_presence_of :first_name, :last_name
 end
