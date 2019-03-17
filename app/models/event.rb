@@ -17,4 +17,6 @@ class Event < ApplicationRecord
   validates_presence_of :name, :details, :location
 
   scope :latest, -> { order('id DESC') }
+  scope :upcoming, -> { where('starts_at > ?', Date.today) }
+  scope :past, -> { where('starts_at < ?', Date.today) }
 end

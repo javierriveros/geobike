@@ -5,7 +5,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.latest
+    if !params[:date].nil?
+      @date = params[:date]
+      @events = @date == 'upcoming' ? Event.upcoming : Event.past
+    else
+      @events = Event.latest
+    end
   end
 
   # GET /events/1

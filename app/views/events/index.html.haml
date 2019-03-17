@@ -4,6 +4,14 @@
   .section.py-2
     .container
       .row
+        .col-12.text-center
+          %ul.nav.nav-pills.nav-pills-rose.row.justify-content-center
+            %li.nav-item
+              = link_to 'Todos', events_path, class: "nav-link #{ 'active' if !@date}"
+            %li.nav-item
+              = link_to 'Pasados', events_path(date: 'past'), class: "nav-link #{ 'active' if @date == 'past'}"
+            %li.nav-item
+              = link_to 'Próximos', events_path(date: 'upcoming'), class: "nav-link #{ 'active' if @date == 'upcoming'}"
         .col-md-12
           .row
             - @events.each do |event|

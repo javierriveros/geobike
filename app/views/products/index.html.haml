@@ -17,7 +17,7 @@
                   - if product.images.any?
                     .card-header.card-header-image
                       = link_to product do
-                        = image_tag url_for(product.images.first), :fetch_format=>:auto, :crop=>"scale"
+                        = cl_image_tag "#{product.images.first.blob.key}"
                   .card-body
                     %h6.card-category.text-rose= link_to product.category.name, product.category
                     = link_to product do
