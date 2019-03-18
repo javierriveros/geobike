@@ -14,11 +14,11 @@
                 .input-group-prepend
                   %span.input-group-text
                     %i.material-icons mail
-                = email_field_tag 'user[email]', autocomplete: "email", class: "form-control", placeholder: "Correo electrónico...", required: true
+                = email_field_tag 'user[email]', session['devise.auth']['info']['email'], autocomplete: "email", class: "form-control", placeholder: "Correo electrónico...", required: true
               .input-group
                 .input-group-prepend
                   %span.input-group-text
-                    %i.material-icons lock_outline
-                = text_field_tag 'user[name]', autocomplete: "name", class: "form-control", placeholder: "Nombre completo...", required: true
+                    %i.material-icons person
+                = text_field_tag 'user[name]', session['devise.auth']['info']['name'], autocomplete: "name", class: "form-control", placeholder: "Nombre completo...", required: true
             .footer.text-center
               = submit_tag 'Completar registro', class: " btn btn-primary btn-link btn-wd btn-lg"

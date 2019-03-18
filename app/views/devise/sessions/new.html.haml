@@ -4,15 +4,11 @@
       .col-lg-4.col-md-6.ml-auto.mr-auto
         .card.card-login.p-relative
           = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form'}) do |f|
-            .card-header.card-header-primary.text-center
-              %h4.card-title Iniciar sesión
-              -# .social-line
-              -#   %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
-              -#     %i.fa.fa-facebook-square
-              -#   -# %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
-              -#   -#   %i.fa.fa-twitter
-              -#   -# %a.btn.btn-just-icon.btn-link{:href => "#pablo"}
-              -#   -#   %i.fa.fa-google-plus
+            .card-header.card-header-primary.text-center.py-1
+              %h4.card-title.mb-0 Iniciar sesión
+              .social-line.mt-0
+                = link_to '/users/auth/facebook', class: 'btn btn-just-icon btn-link' do
+                  %i.fa.fa-facebook-square
             .card-body
               .input-group
                 .input-group-prepend
@@ -26,5 +22,5 @@
                 = f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Contraseña..."
             .footer.text-center
               = f.submit "Log in", class: " btn btn-primary btn-link btn-wd btn-lg"
-              .social-links
-                = render "devise/shared/links"
+              -# .social-links
+              -#   = render "devise/shared/links"
