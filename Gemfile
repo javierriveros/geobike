@@ -38,8 +38,9 @@ gem 'annotate'
 gem 'cloudinary', require: false
 gem 'activestorage-cloudinary-service'
 gem 'image_processing', '~> 1.2'
-# Devise for user management
+# Devise for authentication
 gem 'devise'
+gem 'omniauth-facebook'
 # Name of person for names handling
 gem 'name_of_person'
 # Paypal for payments

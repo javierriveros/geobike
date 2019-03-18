@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    'omniauth_callbacks': 'users/omniauth_callbacks'
+  }
   
   resources :events, only: [:index, :show]
   resources :categories, only: [:index, :show]
@@ -36,4 +38,5 @@ Rails.application.routes.draw do
 
   post '/events/:id/attend', to: 'events#attend', as: :attend
 
+  post '/custom_sign_up', to: 'users/omniauth_callbacks#custom_sign_up'
 end

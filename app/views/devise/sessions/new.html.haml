@@ -26,5 +26,5 @@
                 = f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Contraseña..."
             .footer.text-center
               = f.submit "Log in", class: " btn btn-primary btn-link btn-wd btn-lg"
-              -# .d-flex.justify-content-between
-              -#   = render "devise/shared/links"
+              .social-links
+                = render "devise/shared/links"
