@@ -1,0 +1,22 @@
+= form_for @bicycle_shop do |f|
+  - if @bicycle_shop.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@bicycle_shop.errors.count, "error")} prohibited this bicycle_shop from being saved:"
+      %ul
+        - @bicycle_shop.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :lat
+    = f.text_field :lat
+  .field
+    = f.label :lng
+    = f.text_field :lng
+  .actions
+    = f.submit 'Save'
