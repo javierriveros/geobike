@@ -1,0 +1,2 @@
+class BicycleShop < ApplicationRecord
+end

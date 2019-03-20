@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @bicycle_shop.name
+%p
+  %b Description:
+  = @bicycle_shop.description
+%p
+  %b Lat:
+  = @bicycle_shop.lat
+%p
+  %b Lng:
+  = @bicycle_shop.lng
+
+= link_to 'Edit', edit_bicycle_shop_path(@bicycle_shop)
+\|
+= link_to 'Back', bicycle_shops_path

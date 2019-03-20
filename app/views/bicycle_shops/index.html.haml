@@ -1,0 +1,39 @@
+#map
+
+:javascript
+  let position;
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(p => {
+      position = p
+    })
+  }
+  mapboxgl.accessToken = 'pk.eyJ1IjoiamF2aWVycml2ZXJvcyIsImEiOiJjanRoanlkOGIyZms3M3lwN2l0eG5oaGpuIn0.ioCBuQ789Gnj1KKOcHChCg';
+  
+  let center = position != null ? [position.coords.latitude, position.coords.longitude] : [4.0727855, -73.342883];
+  let map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: center,
+    zoom: 15
+  });
+  
+  let shops = [];
+  fetch('/bicycle_shops.json')
+    .then(res => res.json())
+    .then(data => {shops = data;console.log(shops)})
+  // create the popup
+
+  for(let shop of shops) {
+    let popup = new mapboxgl.Popup({ offset: 25 })
+    .setText(`${shop.name}: ${shop.description}`);
+    
+    // create DOM element for the marker
+    let el = document.createElement('div');
+    el.id = 'marker';
+    
+    // create the marker
+    new mapboxgl.Marker(el)
+    .setLngLat([shop.lat, shop.lng])
+    .setPopup(popup) // sets a popup on this marker
+    .addTo(map);  
+  }
