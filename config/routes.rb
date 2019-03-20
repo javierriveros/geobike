@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     'omniauth_callbacks': 'users/omniauth_callbacks'
   }
   
-  resources :events, only: [:index, :show]
+  resources :events, only: [:index, :show] do
+    resources :comments, only: [:create,:destroy]
+  end
   resources :categories, only: [:index, :show]
   resources :products, only: [:index, :show]
   resources :in_shopping_carts, only: [:create, :destroy, :update]

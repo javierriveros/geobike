@@ -18,5 +18,12 @@ module Geobike
 
     # Use Vips for processing variants.
     config.active_storage.variant_processor = :vips
+
+
+    config.generators do |g|
+      g.template_engine :haml
+      g.stylesheets     false
+      g.javascripts     false
+    end
   end
 end

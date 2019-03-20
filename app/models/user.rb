@@ -23,6 +23,7 @@ class User < ApplicationRecord
 
   has_many :attend
   has_many :events, through: :attend
+  has_many :comments
 
   validates_presence_of :first_name, :last_name
 

@@ -1,0 +1,27 @@
+.media.pb-4
+  -# %a.float-left{:href => "#pablo"}
+  .avatar
+    %img.media-object{alt: "64x64", src: "http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/47/474eb3fe7b60652d73dd1435b8f0e3a9b53ecb2d_full.jpg"}/
+  .media-body
+    %h4.media-heading.mb-0
+      = comment.user.name.full
+      %small
+        ·
+        = comment.created_at.strftime('%A,  %B %e')
+        -# = comment.created_at.strftime('%b, %e %Y, %l:%M %p')
+    .d-block.text-warning
+      - comment.rating.to_i.times do
+        %i.material-icons star
+      - blank_stars = 5 - comment.rating
+      - blank_stars.times do
+        %i.material-icons star_border
+    %p= comment.content
+    - if user_signed_in?
+      - if current_user == comment.user
+        .media-footer
+          = link_to [comment.event,comment], method: :delete, class: 'btn btn-danger btn-link float-right', "data-original-title" => 'Eliminar comentario', rel: "tooltip", title: 'Eliminar comentario', data: {confirm:'¿Estás seguro? Esta acción no se puede deshacer'} do
+            %i.material-icons delete
+            Eliminar
+          -# %a.btn.btn-danger.btn-link.float-right{:href => "#pablo"}
+          -#   %i.material-icons favorite
+          -#   243

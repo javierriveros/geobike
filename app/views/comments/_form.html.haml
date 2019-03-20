@@ -1,0 +1,25 @@
+= form_for [@event, @comment] do |f|
+  - if @comment.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+      %ul
+        - @comment.errors.full_messages.each do |message|
+          %li= message
+  .form-group.bmd-form-group
+    = f.label :rating
+    .rate.d-flex.flex-row-reverse.justify-content-end
+      = f.radio_button :rating, 5, id: "star5"
+      %label{for: "star5", title: "5 estrellas"} 5 estrellas
+      = f.radio_button :rating, 4, id: "star4"
+      %label{for: "star4", title: "4 estrellas"} 4 estrellas
+      = f.radio_button :rating, 3, id: "star3"
+      %label{for: "star3", title: "3 estrellas"} 3 estrellas
+      = f.radio_button :rating, 2, id: "star2"
+      %label{for: "star2", title: "2 estrellas"} 2 estrellas
+      = f.radio_button :rating, 1, id: "star1"
+      %label{for: "star1", title: "1 estrellas"} 1 estrella
+  .form-group.bmd-form-group
+    = f.label :content, "Escribe aquí tu comentario", class: 'bmd-label-floating'
+    = f.text_area :content, class: 'form-control', required: true, size: "2x5"
+  .actions
+    = f.submit 'Comentar 👉', class: 'btn btn-success btn-wd'

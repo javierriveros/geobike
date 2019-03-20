@@ -18,6 +18,7 @@ class Event < ApplicationRecord
 
   has_many :attend
   has_many :users, through: :attend, foreign_key: 'event_id'
+  has_many :comments
 
   scope :latest, -> { order('id DESC') }
   scope :upcoming, -> { where('starts_at > ?', Date.today) }
